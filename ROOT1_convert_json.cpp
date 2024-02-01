@@ -16,7 +16,7 @@ int main(){
     TTree tree("Measurements");
 
     float cpu,frq,ram,powa,gpu;
-    char timestamp[25];
+    char timestamp[30];
 
     tree.Branch("cpu",&cpu);
     tree.Branch("frq",&frq);
