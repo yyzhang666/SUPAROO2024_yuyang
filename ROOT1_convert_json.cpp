@@ -7,7 +7,7 @@
 
 using json = nlohmann::json;
 
-int main(){
+int ROOT1_convert_json(){
     std::ifstream file("energy_data.json");
     json data;
     file>>data;
