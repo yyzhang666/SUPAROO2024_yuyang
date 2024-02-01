@@ -11,7 +11,7 @@ void ROOT1_read_file(){
     TTree *measurements = nullptr;
     file->GetObject("Measurements",measurements);
 
-    double cpu,powa;
+    float cpu,powa;
     char timestamp[30];
     measurements->SetBranchAddress("cpu",&cpu);
     measurements->SetBranchAddress("powa",&powa);
@@ -19,11 +19,11 @@ void ROOT1_read_file(){
 
     measurements->GetEntry(0);
 
-    double minPow=powa;
-    double maxPow=powa;
-    double nPow=powa;
-    double avePow=0;
-    double totalE=0;
+    float minPow=powa;
+    float maxPow=powa;
+    float nPow=powa;
+    float avePow=0.0;
+    float totalE=0.0;
 
     Long64_t n=measurements->GetEntries();
     for(Long64_t i=0;i<n;i++){

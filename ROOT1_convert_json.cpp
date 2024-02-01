@@ -7,13 +7,13 @@
 
 using json = nlohmann::json;
 
-int main(){
+int ROOT1_convert_json(){
     std::ifstream file("energy_data.json");
     json data;
     file>>data;
 
-    TFile rootFile(energy_data.root,"RECREATE");
-    TTree tree("Measurements");
+    TFile rootFile("energy_data.root","RECREATE");
+    TTree tree("Measurements","power metrics of the machine");
 
     float cpu,frq,ram,powa,gpu;
     char timestamp[30];
@@ -23,10 +23,12 @@ int main(){
     tree.Branch("ram", &ram);
     tree.Branch("powa", &powa);
     tree.Branch("gpu", &gpu);
-    tree.Branch("timestamp",&timestamp);
+    tree.Branch("timestamp",&timestamp,"timestamp/C");
 
     for (auto& entry : data["measurements"].items()) {
-        timestamp = entry.key(); 
+        strncpy(timestamp, entry.key().c_str(), sizeof(timestamp));
+        timestamp[sizeof(timestamp) - 1] = '\0'; 
+        
         cpu = entry.value()["cpu"];
         frq = entry.value()["frq"];
         ram = entry.value()["ram"];
