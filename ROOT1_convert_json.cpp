@@ -23,7 +23,7 @@ int ROOT1_convert_json(){
     tree.Branch("ram", &ram);
     tree.Branch("powa", &powa);
     tree.Branch("gpu", &gpu);
-    tree.Branch("timestamp",&timestamp);
+    tree.Branch("timestamp",&timestamp,"timestamp/C");
 
     for (auto& entry : data["measurements"].items()) {
         strncpy(timestamp, entry.key().c_str(), sizeof(timestamp));
