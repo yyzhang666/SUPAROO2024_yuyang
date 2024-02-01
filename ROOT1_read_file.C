@@ -11,7 +11,7 @@ void ROOT1_read_file(){
     TTree *measurements = nullptr;
     file->GetObject("Measurements",measurements);
 
-    double cpu,powa;
+    float cpu,powa;
     char timestamp[30];
     measurements->SetBranchAddress("cpu",&cpu);
     measurements->SetBranchAddress("powa",&powa);
