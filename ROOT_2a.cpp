@@ -6,11 +6,15 @@
 #include "TCanvas.h"
 
 void ROOT_2a(){
-TFile signal("PsuedoData_Histogram_100fb.root");
+TFile *signal = TFile::Open("PsuedoData_Histogram_100fb.root");
+TH1D *sig;
 
-//Creat Canvas
-TCanvas *sig=new TCanvas()
+signal->GetObject("signal",sig);
 
-//Plot the psuedo data
-signal.GetObject("signal",sig);
+TCanvas *canvas = new TCanvas("canvas","Signal data",800,600);
 sig->Draw();
+
+signal->Close();
+delete signal;
+
+}
