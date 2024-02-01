@@ -12,8 +12,8 @@ int main(){
     json data;
     file>>data;
 
-    TFile rootFile(energy_data.root,"RECREATE");
-    TTree tree("Measurements");
+    TFile rootFile("energy_data.root","RECREATE");
+    TTree tree("Measurements","power metrics of the machine");
 
     float cpu,frq,ram,powa,gpu;
     char timestamp[30];
@@ -26,7 +26,9 @@ int main(){
     tree.Branch("timestamp",&timestamp);
 
     for (auto& entry : data["measurements"].items()) {
-        timestamp = entry.key(); 
+        strncpy(timestamp, entry.key().c_str(), sizeof(timestamp));
+        timestamp[sizeof(timestamp) - 1] = '\0'; 
+        
         cpu = entry.value()["cpu"];
         frq = entry.value()["frq"];
         ram = entry.value()["ram"];
