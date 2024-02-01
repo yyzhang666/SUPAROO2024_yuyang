@@ -5,10 +5,8 @@
 #include "TH1D.h"
 #include "TCanvas.h"
 
-int main(){
+void ROOT_2b(){
 TFile signal("PsuedoData_Histogram_100fb.root");
-TFile background("Background_1fb.root");
-TFile signal_1fb("Signal_1fb.root");
 
 //Creat Canvas
 TCanvas *sig=new TCanvas()
