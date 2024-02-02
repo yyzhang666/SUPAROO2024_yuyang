@@ -7,14 +7,12 @@
 
 void ROOT_2a(){
 TFile *signal = TFile::Open("PsuedoData_Histogram_100fb.root");
-TH1D *sig;
+TH1D *sig=nullptr;
 
 signal->GetObject("signal",sig);
 
 TCanvas *canvas = new TCanvas("canvas","Signal data",800,600);
 sig->Draw();
-
-signal->Close();
-delete signal;
+canvas->Update();
 
 }
