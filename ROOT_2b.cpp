@@ -27,7 +27,7 @@ for(size_t i=0;i<nEntries;i++){
 
 TH1D *hist_mass2=(TH1D*)(hist_mass->Clone("hist_mass2"));
 hist_mass2->Scale(100.0);
-hist_mass2->Fit("gaus");
+hist_mass2->Fit("expo");
 
 TCanvas *canvas=new TCanvas();
 hist_mass2->Draw();
