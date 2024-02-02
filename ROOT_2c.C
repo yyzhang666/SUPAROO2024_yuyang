@@ -7,7 +7,7 @@
 
 void ROOT_2c(){
 //Open files
-TFile *signal = TFile::Open("PsuedoData_Histogram_100fb.root");
+TFile *signal = TFile::Open("PseudoData_Histogram_100fb.root");
 TFile *BG=TFile::Open("Background_1fb.root");
 
 //Book histograms
@@ -38,7 +38,7 @@ hist_mass2->Scale(100.0);
 //Draw the data and background on the same plot
 TCanvas *canvas = new TCanvas("canvas","Signal data",800,600);
 
-TPad *pad1 = new TPad(“pad1”,"Signal and Background", 0, 0.3, 1, 1.0);
+TPad *pad1 = new TPad("pad1","Signal and Background", 0, 0.3, 1, 1.0);
 pad1->Draw();
 pad1->cd();
 sig->Draw();
@@ -47,7 +47,7 @@ canvas->Update();
 
 //Create a Pad to draw the difference
 canvas->cd();
-TPad *pad2 = new TPad(“pad2”,"Difference", 0, 0.3, 1, 1.0);
+TPad *pad2 = new TPad("pad2","Difference", 0, 0.3, 1, 1.0);
 pad2->Draw();
 pad2->cd();
 
