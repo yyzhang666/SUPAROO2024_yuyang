@@ -6,25 +6,32 @@
 #include "TCanvas.h"
 
 void ROOT_2b(){
-TFile signal("PsuedoData_Histogram_100fb.root");
+TFile *BG=TFile::Open("Background_1fb.root");
 
-//Creat Canvas
-TCanvas *sig=new TCanvas()
+TH1D *hist_mass=new TH1D("mass","weighted invariant mass",100,0.0,200.0);
 
-//Create histograms
-TH1D *sig;
-TH1* invariant_mass=new TH1D("mass","invariant mass",100,0.0,200.0);
+TTree *tree=nullptr;
+BG->GetObject("tree",tree);
 
-//Plot the psuedo data
-signal.GetObject("signal",sig);
-sig->Draw();
+double w,m;
 
-double event_weight,invariant_mass;
-tree->
+tree->SetBranchAddress("eventWeight",&w);
+tree->SetBranchAddress("invariantMass",&m);
+
 //loop the events
 size_t nEntries=tree->GetEntries();
 for(size_t i=0;i<nEntries;i++){
     tree->GetEntry(i);
-    
+    hist_mass->Fill(m,w);
 }
+
+TH1D *hist_mass2=(TH1D*)(hist_mass->Clone("hist_mass2"));
+hist_mass2->Scale(100.0);
+hist_mass2->Fit("gaus");
+
+TCanvas *canvas=new TCanvas();
+hist_mass2->Draw();
+canvas->Update();
+
+BG->Close();
 }
