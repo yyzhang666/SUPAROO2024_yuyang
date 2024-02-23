@@ -46,6 +46,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "ROOT_2c.C": "cpp"
+        "ROOT_2c.C": "cpp",
+        "Project.C": "cpp",
+        "ROOT_2d.C": "cpp"
     }
 }

@@ -33,5 +33,4 @@ TCanvas *canvas=new TCanvas();
 hist_mass2->Draw();
 canvas->Update();
 
-BG->Close();
 }
