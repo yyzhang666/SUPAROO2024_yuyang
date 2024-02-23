@@ -10,7 +10,7 @@
 
 void ROOT_2c(){
 //Open files
-TFile *signal = TFile::Open("PsuedoData_Histogram_100fb.root");
+TFile *signal = TFile::Open("PseudoData_Histogram_100fb.root");
 TFile *BG=TFile::Open("Background_1fb.root");
 
 //Book histograms
